@@ -74,14 +74,14 @@ fi
 
 play_audio=true
 if [ -z $audio_info ]; then
-	audio_path="/usr/share/sounds/timer/duck.wav"
+	audio_path="/usr/share/sounds/timer/tone.wav"
 elif [[ "$audio_info" == "no_audio" ]]; then
 	play_audio=false
 elif [ -f "$audio_info" ]; then
 	audio_path="$audio_info"
 elif ! [ -f "$audio_info" ]; then
-    echo -e "\n\t${BORANGE}[WARNING]${NC} Audio path ${BWHITE}$audio_info${NC} doesn't exist. Setting default audio path ${BWHITE}/usr/share/sounds/timer/duck.wav${NC}"
-	audio_path="/usr/share/sounds/timer/duck.wav"
+    echo -e "\n\t${BORANGE}[WARNING]${NC} Audio path ${BWHITE}$audio_info${NC} doesn't exist. Setting default audio path ${BWHITE}/usr/share/sounds/timer/tone.wav${NC}"
+	audio_path="/usr/share/sounds/timer/tone.wav"
 fi
 
 # Display timer settings
@@ -113,3 +113,6 @@ do
 		mpv $audio_path --really-quiet > /dev/null 2>&1 &
 	fi
 done
+
+notify-send "Countdown Finished"
+echo "Countdown Finishd"
